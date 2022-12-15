@@ -25,10 +25,14 @@ export default class CurrService {
 
   async getAllCurr() {
     let today = this.giveDay();
-    const res = await this.getResource(
-      `/NBUStatService/v1/statdirectory/exchange?date=${today}&json`
+    const USD = await this.getResource(
+      `/NBUStatService/v1/statdirectory/exchange?valcode=USD&date=${today}&json`
     );
-    return [(Number(res[25].rate)), (Number(res[32].rate))];
+    const EUR = await this.getResource(
+      `/NBUStatService/v1/statdirectory/exchange?valcode=EUR&date=${today}&json`
+    );
+    console.log([USD[0].rate, (EUR[0]).rate])
+    return [(Number(USD[0].rate)), (Number(EUR[0].rate))];
   }
 
   giveConversion(fromInput, fromCurr, toCurr, currRatio) {
