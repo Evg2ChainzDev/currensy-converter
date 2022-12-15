@@ -1,9 +1,11 @@
+import React from 'react'
+
 import "./ToSection.css";
 
 function ToSection({updateToInput,toInput,updateToCurr, ToCurr}) {
   return (
     <div className="to-section">
-      This is ToSection
+      Get
       <input type="text" onChange={updateToInput} value={ toInput }/>
       <select name="" id="" onChange={updateToCurr} value={ToCurr}>
         <option value="UAH">UAH</option>

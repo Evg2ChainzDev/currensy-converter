@@ -1,11 +1,9 @@
+import React from 'react';
+
 import "./Header.css";
 
 
 function Header({currDolEur}) {
-
-
-  // console.log('component render');
-  // console.log(currDolEur);
 
   return (
     <div className="header">

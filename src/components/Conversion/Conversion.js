@@ -1,3 +1,5 @@
+import React from 'react'
+
 import "./Conversion.css";
 
 import FromSection from './FromSection/FromSection';
@@ -13,7 +15,6 @@ function Conversion({currDolEur}) {
   const [toCurr, setToCurr] = useState('UAH');
   const [ifActiveToInput, setIfActiveToInput] = useState(false);
 
-  // console.log(currDolEur)
   const currRatio = ({USD: Number(currDolEur[0]), EUR: Number(currDolEur[1]), UAH:1})
 
   let currService = new CurrService();
@@ -23,26 +24,22 @@ function Conversion({currDolEur}) {
   const updateFromInput = (e) => {
     setFromInput(e.target.value);
     let resNoRound = currService.giveConversion(e.target.value,fromCurr,toCurr,currRatio);
-    // let res = resNoRound;
     let res = (Math.round(resNoRound * 100) / 100).toFixed(2);
     setToInput(res);
     setIfActiveToInput(false);  
   }
-
 
   const updateFromCurr = (e) => {
     setFromCurr(e.target.value);
 
     if (ifActiveToInput) {
       let resNoRound = currService.giveConversion(toInput,toCurr,e.target.value,currRatio);
-      // let res = resNoRound;
       let res = (Math.round(resNoRound * 100) / 100).toFixed(2);
       setFromInput(res);
       return 
     }
 
     let resNoRound = currService.giveConversion(fromInput,e.target.value,toCurr,currRatio);
-    // let res = resNoRound;
     let res = (Math.round(resNoRound * 100) / 100).toFixed(2);
     setToInput(res);
 
@@ -51,7 +48,6 @@ function Conversion({currDolEur}) {
   const updateToInput = (e) => {
     setToInput(e.target.value);
     let resNoRound = currService.giveConversion(e.target.value,toCurr,fromCurr,currRatio);
-    // let res = resNoRound;
     let res = (Math.round(resNoRound * 100) / 100).toFixed(2);
     setFromInput(res);
     setIfActiveToInput(true)
@@ -69,13 +65,11 @@ function Conversion({currDolEur}) {
 
     if (ifActiveToInput) {
       let resNoRound = currService.giveConversion(toInput,e.target.value,fromCurr,currRatio);
-      // let res = resNoRound;
       let res = (Math.round(resNoRound * 100) / 100).toFixed(2);
       setFromInput(res);
       return 
     }
     let resNoRound = currService.giveConversion(fromInput,fromCurr,e.target.value,currRatio);
-    // let res = resNoRound;
     let res = (Math.round(resNoRound * 100) / 100).toFixed(2);
     setToInput(res);
   }
