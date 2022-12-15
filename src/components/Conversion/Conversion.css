@@ -8,3 +8,7 @@
   font-weight: 900;
   color: rgb(61, 121, 61);
 }
+
+.direction-text {
+  padding-right: 5px;
+}

@@ -31,7 +31,6 @@ export default class CurrService {
     const EUR = await this.getResource(
       `/NBUStatService/v1/statdirectory/exchange?valcode=EUR&date=${today}&json`
     );
-    console.log([USD[0].rate, (EUR[0]).rate])
     return [(Number(USD[0].rate)), (Number(EUR[0].rate))];
   }
 
